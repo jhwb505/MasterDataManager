@@ -12,6 +12,11 @@ java {
     sourceCompatibility = '17'
 }
 
+// Gradle buildするときに重複Jarが存在するエラーの対策
+bootJar {
+    duplicatesStrategy = 'exclude'
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
