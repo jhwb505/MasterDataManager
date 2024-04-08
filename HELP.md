@@ -5,9 +5,11 @@
 * [YouTrack](https://jhwb505.youtrack.cloud/dashboard): プロジェクト管理、課題管理
 
 ### 開発資産情報:
+* Java 17
+* Springboot 3
 * [Postgresql 16](https://www.postgresql.org/download/) : 開発用DB
 * [A5M2](https://a5m2.mmatsubara.com/) : ER図作成とDB閲覧
-* [draw.io] (https://www.drawio.com/) : 図などの資料作成ツール
+* [draw.io](https://www.drawio.com/) : 図などの資料作成ツール
 * [Intellij IDEA Community Edition](https://www.jetbrains.com/idea/download/?section=windows) : 開発用IDEA
 
 ### Guides
