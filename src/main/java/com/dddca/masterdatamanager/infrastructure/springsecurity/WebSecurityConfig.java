@@ -17,22 +17,13 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
-
-/*        http
-
-                .formLogin(form -> form
-                        //.loginProcessingUrl("/login")
-                        .loginPage("/login").permitAll()
-                        //.defaultSuccessUrl("/").permitAll()
-                        .failureUrl("/login?error")
-                ).authorizeRequests(auth -> auth.requestMatchers("/public/**").permitAll());*/
-
-/*        http
+        
+        http
 
                 .formLogin(form -> form
                         .loginProcessingUrl("/login")
-                        .loginPage("/login").permitAll()
-                        .defaultSuccessUrl("/").permitAll()
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/")
                         .failureUrl("/login?error")
                         .permitAll())
                 .logout(logout -> logout
@@ -44,24 +35,10 @@ public class WebSecurityConfig {
                         .requestMatchers("/login").permitAll()
                         // public インタフェースAPI用
                         .requestMatchers("/public/**").permitAll()
+
                 )
                 .csrf(csrf -> csrf.disable())
-                .sessionManagement(session -> session.maximumSessions(1).maxSessionsPreventsLogin(true));*/
-/*        http
-
-                .authorizeRequests(auth -> auth
-                        // staticリソースのアクセス許可, 例:/css/**, /js/**, /images/**など
-
-                        // public インタフェースAPI用
-
-                        .requestMatchers("/login").permitAll()
-                        .anyRequest().authenticated());*/
-        http
-                .authorizeRequests(auth -> auth
-                        .requestMatchers("/login").permitAll()
-                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .anyRequest().authenticated())
-                .formLogin(login -> login.loginPage("/login").permitAll());
+                .sessionManagement(session -> session.maximumSessions(1).maxSessionsPreventsLogin(true));
 
         return http.build();
 
