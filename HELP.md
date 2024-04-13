@@ -12,8 +12,8 @@
 * [draw.io](https://www.drawio.com/) : 図などの資料作成ツール
 * [Intellij IDEA Community Edition](https://www.jetbrains.com/idea/download/?section=windows) : 開発用IDEA
 
-### Guides
-役に立つリンク:
+### 役に立つリンク:
+* [SpringSecurity 5.4以後の書き方について](https://qiita.com/suke_masa/items/908805dd45df08ba28d8)
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)

@@ -29,6 +29,7 @@ public class EclipseLinkJpaConfiguration extends JpaBaseConfiguration {
     @Override
     protected Map<String, Object> getVendorProperties() {
         Map<String, Object> map = new HashMap<>();
+        // LazyLoading、DirtyCheckingのため
         map.put(PersistenceUnitProperties.WEAVING, "true");
         map.put(PersistenceUnitProperties.LOGGING_LEVEL, SessionLog.INFO_LABEL);
         map.put(PersistenceUnitProperties.DDL_GENERATION, PersistenceUnitProperties.CREATE_ONLY);
