@@ -31,7 +31,7 @@ public class EclipseLinkJpaConfiguration extends JpaBaseConfiguration {
         Map<String, Object> map = new HashMap<>();
         // LazyLoading、DirtyCheckingのため
         map.put(PersistenceUnitProperties.WEAVING, "true");
-        map.put(PersistenceUnitProperties.LOGGING_LEVEL, SessionLog.INFO_LABEL);
+        map.put(PersistenceUnitProperties.LOGGING_LEVEL, SessionLog.FINE_LABEL);
         map.put(PersistenceUnitProperties.DDL_GENERATION, PersistenceUnitProperties.CREATE_ONLY);
         return map;
     }
