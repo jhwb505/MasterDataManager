@@ -31,6 +31,7 @@ dependencies {
 
     // Bootstrap5
     implementation 'org.webjars:bootstrap:5.3.3'
+
     implementation('org.springframework.boot:spring-boot-starter-data-jpa') {
         // hibernateを除外する
         exclude group: 'org.hibernate', module: 'hibernate-entitymanager'
