@@ -8,7 +8,7 @@ import lombok.Getter;
 
 @Entity
 @Table(name = "versions")
-public class Version extends AbstractEntity {
+public class MdmVersion extends AbstractEntity {
 
     @Column(name = "name")
     @Getter
@@ -18,10 +18,10 @@ public class Version extends AbstractEntity {
     @Getter
     private String info;
 
-    public Version() {
+    public MdmVersion() {
     }
 
-    public Version(String name, String info) {
+    public MdmVersion(final String name, final String info) {
         this.name = name;
         this.info = info;
     }

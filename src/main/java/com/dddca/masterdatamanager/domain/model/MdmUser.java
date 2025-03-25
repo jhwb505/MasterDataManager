@@ -2,9 +2,7 @@ package com.dddca.masterdatamanager.domain.model;
 
 
 import com.dddca.masterdatamanager.domain.model.abstracts.AbstractVersion;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 @Entity
@@ -20,25 +18,20 @@ public class MdmUser extends AbstractVersion {
     private String lastName;
 
     @Getter
-    @Column(name = "email_address", nullable = false)
-    private String emailAddress;
-
-    @Getter
-    @Column(name = "user_number", nullable = false)
-    private String userNumber;
-
-    @Getter
-    @Column(name = "password", nullable = false)
-    private String password;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "static_user_id", referencedColumnName = "id")
+    private MdmUserStaticInfo staticUserInfo;
 
     public MdmUser() {
     }
 
-    public MdmUser(String firstName, String lastName, String emailAddress, String userNumber, String password, Version currentVersion) {
+    public MdmUser(String firstName, String lastName, String emailAddress, String userNumber, String password, MdmVersion currentVersion) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userNumber = userNumber;
-        this.password = password;
-        this.versionId = currentVersion.getId();
+        super.setVersion(currentVersion);
+
+        MdmUserStaticInfo staticUserInfo = new MdmUserStaticInfo(emailAddress, userNumber, password);
+        this.staticUserInfo = staticUserInfo;
     }
+
 }
