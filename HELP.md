@@ -27,3 +27,16 @@
 Gradle関連:
 * [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 
+### Dockerコンテナ起動方法
+
+docker-compose.yamlが存在するディレクトリで以下のコマンドを実行
+
+```
+docker-compose up -d
+```
+
+コンテナを再起動する場合は以下（2回目以降）
+
+```
+docker-compose start -d
+```
