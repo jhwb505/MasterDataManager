@@ -40,7 +40,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 
         // 1. AuthenticationManagerをビルド
-        // TODO : AuthenticationManager Bean を独立させる
+        // TODO : AuthenticationManager Bean を独立させる、
         AuthenticationManagerBuilder authManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
         authManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
         AuthenticationManager authenticationManager = authManagerBuilder.build();
