@@ -1,0 +1,5 @@
+springdoc:
+  api-docs:
+    path: /public/docs/api-docs # OpenAPIドキュメント（JSON）のパス
+  swagger-ui:
+    path: /public/swagger-ui.html # swagger-uiのパス
