@@ -1,0 +1,23 @@
+version: '3.8'
+#versionはdocker-composeのバージョン（Docker Engineのバージョンに適したものを使用する必要がある）
+
+# servicesにはコンテナ化するサービスを定義する。
+# mdm_databaseはサービス名で自由に定義可能
+services:
+  mdm_database:
+    #build: .　でカレントディレクトリに存在するDockerfileを使ってイメージのビルドを行う
+    build: .
+    container_name: mdm-database-postgres
+    #restart: on-failure でエラーで以上終了した場合のみ再起動（コンテナの自動起動ポリシーの設定）
+    restart: on-failure
+    # コンテナ内での環境変数を設定（POSTGRES_USERなどはPostgresSQLの公式Dockerイメージが持っているentrypoint.shというスクリプトで参照される初期設定用の変数なのでどんな変数名でもいいわけではない）
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: masterdatamanager
+    # localで5432で動かしているサービスがあるかもしれないので、5433で起動してコンテナの5432にマッピングする
+    ports:
+      - "5433:5432"
+    # volumesでデータを永続化するディレクトリを設定する
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data  # /var/lib/postgresql/dataはコンテナ内の PostgreSQL のデータ保存ディレクトリ
