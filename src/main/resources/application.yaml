@@ -1,5 +1,9 @@
 springdoc:
   api-docs:
     path: /public/docs/api-docs # OpenAPIドキュメント（JSON）のパス
+    enabled: true  # APIドキュメントを有効化
   swagger-ui:
     path: /public/swagger-ui.html # swagger-uiのパス
+  paths-to-match: /**
+  default-produces-media-type: application/json
+  swagger-ui.oauth.use-pkce-with-authorization-code-grant: true
