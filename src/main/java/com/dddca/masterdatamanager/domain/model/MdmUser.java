@@ -5,6 +5,8 @@ import com.dddca.masterdatamanager.domain.model.abstracts.AbstractVersion;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.util.ArrayList;
+
 @Entity
 @Table(name = "mdm_users")
 public class MdmUser extends AbstractVersion {
@@ -34,4 +36,11 @@ public class MdmUser extends AbstractVersion {
         this.staticUserInfo = staticUserInfo;
     }
 
+    @ManyToMany
+    @JoinTable(
+            name = "mdm_user_user_roles", // 中間テーブル
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+    )
+    private ArrayList<MdmUserRole> mdmUserRoles;
 }
