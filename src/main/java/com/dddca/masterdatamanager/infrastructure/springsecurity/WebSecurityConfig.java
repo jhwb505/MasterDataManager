@@ -46,15 +46,6 @@ public class WebSecurityConfig {
         AuthenticationManager authenticationManager = authManagerBuilder.build();
 
         http
-
-                .formLogin(form -> form
-                        .loginProcessingUrl("/login")
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/home")
-                        .failureUrl("/login?error")
-                        .usernameParameter("username")
-                        .passwordParameter("password")
-                        .permitAll())
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login"))
