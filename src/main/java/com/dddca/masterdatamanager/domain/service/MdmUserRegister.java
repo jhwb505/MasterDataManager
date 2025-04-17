@@ -4,6 +4,7 @@ import com.dddca.masterdatamanager.domain.model.MdmUser;
 import com.dddca.masterdatamanager.domain.model.MdmVersion;
 import com.dddca.masterdatamanager.domain.repository.MdmUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @Service

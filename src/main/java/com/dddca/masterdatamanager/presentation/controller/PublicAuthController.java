@@ -1,17 +1,22 @@
 package com.dddca.masterdatamanager.presentation.controller;
 
+import com.dddca.masterdatamanager.domain.model.request.UserRegisterRequest;
 import com.dddca.masterdatamanager.domain.service.MdmUserRegister;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+@Tag(name= "PublicAuth")
 @RestController
 @RequestMapping("/public/api/auth")
 public class PublicAuthController {
+
     @Autowired
     MdmUserRegister mdmUserRegister;
 
@@ -20,16 +25,14 @@ public class PublicAuthController {
         throw new IllegalStateException("JwtAuthenticationFilterにハンドルされているはず、ここに来るべきでない");
     }
 
+    @Operation(summary = "新規ユーザー登録", description = "新規ユーザー登録を行うAPIです。")
+    @ApiResponse(responseCode = "200", description = "登録成功", content = @Content(mediaType = "application/json"))
     @PostMapping("/register")
-    public String register(@RequestBody Map<String, String> credentials) {
-        final String firstName = credentials.get("first_name");
-        final String lastName = credentials.get("last_name");
-        final String emailAddress = credentials.get("email_address");
-        final String passWord = credentials.get("password");
+    public String register(@RequestBody UserRegisterRequest req) {
 
-        //TODO
+        System.out.println(req);
 
-       mdmUserRegister.register(firstName, lastName, emailAddress, passWord);
+//      mdmUserRegister.register(firstName, lastName, emailAddress, passWord);
         return "登録が完了しました";
     }
 
