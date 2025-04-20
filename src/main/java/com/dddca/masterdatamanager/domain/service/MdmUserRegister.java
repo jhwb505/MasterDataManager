@@ -5,6 +5,7 @@ import com.dddca.masterdatamanager.domain.model.MdmVersion;
 import com.dddca.masterdatamanager.domain.model.request.UserRegisterRequest;
 import com.dddca.masterdatamanager.domain.repository.MdmUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -24,8 +25,9 @@ public class MdmUserRegister {
         final String name = "initial";
         final String info = "初版";
         final MdmVersion currentVersion = new MdmVersion(name, info);
+        final String encodedPassWord = new BCryptPasswordEncoder().encode(req.passWord());
         final String userNumber = UUID.randomUUID().toString();
-        MdmUser user = new MdmUser(req.firstName(), req.lastName(), req.emailAddress(), userNumber, req.passWord(), currentVersion);
+        MdmUser user = new MdmUser(req.firstName(), req.lastName(), req.emailAddress(), userNumber, encodedPassWord, currentVersion);
         mdmUserRepository.save(user);
     }
 }
