@@ -1,6 +1,8 @@
 package com.dddca.masterdatamanager.presentation.controller;
 
+import com.dddca.masterdatamanager.domain.model.request.LoginRequest;
 import com.dddca.masterdatamanager.domain.model.request.UserRegisterRequest;
+import com.dddca.masterdatamanager.domain.model.response.LoginResponse;
 import com.dddca.masterdatamanager.domain.model.response.UserRegisterResponse;
 import com.dddca.masterdatamanager.domain.service.MdmUserRegister;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-
 @Tag(name = "PublicAuth")
 @RestController
 @RequestMapping("/public/api/auth")
@@ -26,8 +26,9 @@ public class PublicAuthController {
     @Autowired
     MdmUserRegister mdmUserRegister;
 
+    @ApiResponse(responseCode = "200", description = "ログイン成功", content = @Content(mediaType = "application/json"))
     @PostMapping("/login")
-    public Map<String, String> login(@RequestBody Map<String, String> credentials) {
+    public LoginResponse login(@RequestBody LoginRequest req) {
         throw new IllegalStateException("JwtAuthenticationFilterにハンドルされているはず、ここに来るべきでない");
     }
 
